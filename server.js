@@ -1,23 +1,22 @@
 require('dotenv').config();
+// const mongoose = require('./db/connection');
 const express = require('express');
 const app = express();
 const logger = require('morgan');
 const { PORT } = process.env;
-app.use(logger('dev'));
-
 const cors = require('cors');
-app.use(cors());
 
-app.use(express.urlencoded({ extended: false }));
+app.use(logger('dev'));
+app.use(cors());
 app.use(express.json());
 
 app.get('/', (req, res) => {
 	res.json({ hello: 'Hello World, welcome to my first Fullstack App' });
 });
 
-const animalRouter = require('./controllers/animalRoutes');
-app.use('/animals/', animalRouter);
-const zooRouter = require('./controllers/zooRoutes');
-app.use('/zoos/', zooRouter);
+const animalRoutes = require('./controllers/animalRoutes');
+app.use('/animals/', animalRoutes);
+const zooRoutes = require('./controllers/zooRoutes');
+app.use('/zoos/', zooRoutes);
 
 app.listen(PORT, () => console.log(`Server running on port ${PORT}`));
