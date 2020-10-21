@@ -1,7 +1,7 @@
 require('dotenv').config();
 // REVERT LATER
-// const { MONGODBURI } = process.env;
-const MONGODBURI = 'mongodb://localhost:27017/';
+const { MONGODBURI } = process.env;
+// const MONGODBURI = 'mongodb://localhost:27017/';
 const mongoose = require('mongoose');
 const config = { useUnifiedTopology: true, useNewUrlParser: true };
 const db = mongoose.connection;
